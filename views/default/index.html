@@ -1,0 +1,18 @@
+{{extend 'layout.html'}}
+
+<h1>Welcome</h1>
+
+<p>These are the posts so far:</p>
+<ul>
+{{for r in rows:}}
+  {{=LI(A('Edit', _class='btn', _href=URL('default', 'edit', args=[r.id])),
+     A('View', _class='btn', _href=URL('default', 'view', args=[r.id])),   
+    ' Author: ', r.author, ' Content:', r.post_content, 
+    ' Contact: ', r.contact, _class='dbelement'
+  )}}
+{{pass}}
+</ul>
+
+<p>{{=A('Add', _class='btn', _href=URL('default', 'add'))}}
+
+<p>{{=A('Or, go view a better version', _href=URL('default', 'index_nice'))}}</p>
