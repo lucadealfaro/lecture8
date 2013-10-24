@@ -5,7 +5,7 @@
 
 def index():
     """
-    This generates the home page.
+    This generates the home page, or I hope so.
     """
     rows = db(db.board).select()
     return dict(rows=rows)
@@ -24,6 +24,7 @@ def index_nice():
                                     _href=URL('default', 'edit', args=[r.id])),
             )],
         )
+    # Let's return the results.
     return dict(grid=grid)
 
 @auth.requires_login()
