@@ -13,17 +13,24 @@ def index():
 
 @auth.requires_login()
 def index_nice():
+    
+    def compute_name_length(x):
+        return len(x.author)
+    
     q = db.board
     grid = SQLFORM.grid(q,
         searchable=True,
         fields=[db.board.id, db.board.author, db.board.post_content, db.board.contact],
         csv=True, 
         details=True, create=True, editable=True, deletable=True,
+        paginate=2,
         links=[
             dict(header=T('View the record'), 
                  body = lambda r: A('Edit', _class='btn', 
-                                    _href=URL('default', 'edit', args=[r.id])),
-            )],
+                                    _href=URL('default', 'edit', args=[r.id]))),
+            dict(header="Name length",
+                 body = compute_name_length),
+        ],
         )
     # Let's return the results.
     return dict(grid=grid)
