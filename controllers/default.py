@@ -6,6 +6,7 @@
 def index():
     """
     This generates the home page, or I hope so.
+    Just a list of rows.
     """
     rows = db(db.board).select()
     return dict(rows=rows)
