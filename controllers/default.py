@@ -5,11 +5,7 @@
 
 def index():
     """
-    example action using the internationalization operator T and flash
-    rendered by views/default/index.html or views/generic.html
-
-    if you need a simple wiki simple replace the two lines below with:
-    return auth.wiki()
+    This generates the home page.
     """
     rows = db(db.board).select()
     return dict(rows=rows)
